@@ -16,7 +16,7 @@ export interface IOrder {
   orderItems: IOrderItem[];
   subtotal: number;
   total: number;
-  orderStatus: number;
+  orderStatus: string;
 }
 
 export interface IOrderItem {

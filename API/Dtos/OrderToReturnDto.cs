@@ -15,6 +15,6 @@ namespace API.Dtos
         public IReadOnlyList<OrderItemDto> OrderItems { get; set; }
         public decimal Subtotal { get; set; }
         public decimal Total { get; set; }
-        public OrderStatus OrderStatus { get; set; }
+        public string OrderStatus { get; set; }
     }
 }
