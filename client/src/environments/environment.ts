@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://localhost:5001/api/',
+  publishableKey: 'pk_test_kYSVAkcELC97llsds3p6l68800dysqhwUh',
 };
 
 /*

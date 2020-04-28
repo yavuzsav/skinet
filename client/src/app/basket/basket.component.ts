@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import { Observable } from 'rxjs';
 import {IBasket, IBasketItem, IBasketTotals} from '../shared/models/basket';
 import { BasketService } from './basket.service';
@@ -14,7 +14,7 @@ export class BasketComponent implements OnInit {
 
   constructor(private basketService: BasketService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.basket$ = this.basketService.basket$;
     this.basketTotals$ = this.basketService.basketTotal$;
   }

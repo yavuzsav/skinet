@@ -20,6 +20,8 @@ namespace API.Extensions
 
             services.AddScoped<IOrderService, OrderService>();
 
+            services.AddScoped<IPaymentService, PaymentService>();
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
