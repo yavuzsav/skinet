@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using API.Dtos;
 using API.Errors;
@@ -15,21 +14,13 @@ namespace API.Controllers
 {
     public class ProductsController : BaseApiController
     {
-        private readonly IGenericRepository<Product> _productsRepo;
-        private readonly IGenericRepository<ProductBrand> _productBrandRepo;
-        private readonly IGenericRepository<ProductType> _productTypeRepo;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public ProductsController(
-            IGenericRepository<Product> productsRepo,
-            IGenericRepository<ProductBrand> productBrandRepo,
-            IGenericRepository<ProductType> productTypeRepo,
-            IMapper mapper)
+        public ProductsController(IUnitOfWork unitOfWork, IMapper mapper)
         {
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _productTypeRepo = productTypeRepo;
-            _productBrandRepo = productBrandRepo;
-            _productsRepo = productsRepo;
         }
 
         [Cached()]
@@ -40,9 +31,9 @@ namespace API.Controllers
 
             var countSpec = new ProductWithFiltersForCountSpecification(productParams);
 
-            var totalItems = await _productsRepo.CountAsync(countSpec);
+            var totalItems = await _unitOfWork.Repository<Product>().CountAsync(countSpec);
 
-            var products = await _productsRepo.ListAsync(spec);
+            var products = await _unitOfWork.Repository<Product>().ListAsync(spec);
 
             var data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDto>>(products);
 
@@ -50,14 +41,14 @@ namespace API.Controllers
         }
 
         [Cached()]
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetProduct")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ProductToReturnDto>> GetProduct(int id)
         {
             var spec = new ProductsWithTypesAndBrandsSpecification(id);
 
-            var product = await _productsRepo.GetEntityWithSpecAsync(spec);
+            var product = await _unitOfWork.Repository<Product>().GetEntityWithSpecAsync(spec);
 
             if (product == null) return NotFound(new ApiResponse(404));
 
@@ -68,14 +59,76 @@ namespace API.Controllers
         [HttpGet("brands")]
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductBrands()
         {
-            return Ok(await _productBrandRepo.ListAllAsync());
+            return Ok(await _unitOfWork.Repository<ProductBrand>().ListAllAsync());
         }
 
         [Cached()]
         [HttpGet("types")]
         public async Task<ActionResult<IReadOnlyList<ProductType>>> GetProductTypes()
         {
-            return Ok(await _productTypeRepo.ListAllAsync());
+            return Ok(await _unitOfWork.Repository<ProductType>().ListAllAsync());
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> CreateProduct(ProductCreateDto productCreateDto)
+        {
+            var productType = await _unitOfWork.Repository<ProductType>().GetByIdAsync(productCreateDto.ProductTypeId);
+            if (productType == null) return BadRequest(new ApiResponse(404, "Product type not found"));
+            
+            var productBrand = await _unitOfWork.Repository<ProductBrand>().GetByIdAsync(productCreateDto.ProductBrandId);
+            if (productBrand == null) return BadRequest(new ApiResponse(404, "Product brand not found"));
+
+            var product = _mapper.Map<ProductCreateDto, Product>(productCreateDto);
+            
+            _unitOfWork.Repository<Product>().Add(product);
+
+            var result = await _unitOfWork.Complete();
+
+            if (result <= 0) return BadRequest(new ApiResponse(400, "Problem creating product"));
+
+            product.ProductBrand = productBrand;
+            product.ProductType = productType;
+            var productToReturn = _mapper.Map<Product, ProductToReturnDto>(product);
+
+            return CreatedAtRoute("GetProduct", new {id = product.Id}, productToReturn);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<ProductToReturnDto>> UpdateProduct(int id, ProductCreateDto productCreateDto)
+        {
+            var product = await _unitOfWork.Repository<Product>().GetByIdAsync(id);
+            if (product == null) return BadRequest(new ApiResponse(404, "Product not found"));
+
+            var productType = await _unitOfWork.Repository<ProductType>().GetByIdAsync(productCreateDto.ProductTypeId);
+            if (productType == null) return BadRequest(new ApiResponse(404, "Product type not found"));
+
+            var productBrand = await _unitOfWork.Repository<ProductBrand>().GetByIdAsync(productCreateDto.ProductBrandId);
+            if (productBrand == null) return BadRequest(new ApiResponse(404, "Product brand not found"));
+
+            _unitOfWork.Repository<Product>().Update(product);
+
+            var result = await _unitOfWork.Complete();
+
+            if (result <= 0) return BadRequest(new ApiResponse(400, "Problem updating product"));
+            
+            product.ProductBrand = productBrand;
+            product.ProductType = productType;
+            return _mapper.Map<Product, ProductToReturnDto>(product);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteProduct(int id)
+        {
+            var product = await _unitOfWork.Repository<Product>().GetByIdAsync(id);
+            if (product == null) return BadRequest(new ApiResponse(404, "Product not found"));
+            
+            //todo: delete product photos in cloudinary
+            
+            _unitOfWork.Repository<Product>().Delete(product);
+
+            var result = await _unitOfWork.Complete();
+            if (result <= 0) return BadRequest(new ApiResponse(400, "Problem deleting product"));
+            return Ok();
         }
     }
 }

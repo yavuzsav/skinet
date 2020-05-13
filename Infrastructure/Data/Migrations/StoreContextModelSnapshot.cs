@@ -51,8 +51,8 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int?>("DeliveryMethodId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTimeOffset>("OrderDate")
-                        .HasColumnType("TEXT");
+                    b.Property<long>("OrderDate")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("OrderStatus")
                         .IsRequired()
@@ -110,7 +110,6 @@ namespace Infrastructure.Data.Migrations
                         .HasMaxLength(100);
 
                     b.Property<string>("PictureUrl")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<double>("Price")
