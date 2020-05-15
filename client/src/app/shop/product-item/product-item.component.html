@@ -2,7 +2,7 @@
   <div class="image position-relative" style="cursor: pointer;">
     <img
       class="img-fluid bg-info"
-      src="{{ product.pictureUrl }}"
+      src="{{ product.pictureUrl || defaultPicture }}"
       alt="{{ product.name }}"
     />
     <div class="d-flex align-items-center justify-content-center hover-overlay">

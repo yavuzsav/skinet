@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20200513085035_UpdatedProduct")]
-    partial class UpdatedProduct
+    [Migration("20200514054726_AddedPhotoEntity")]
+    partial class AddedPhotoEntity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -95,6 +95,31 @@ namespace Infrastructure.Data.Migrations
                     b.ToTable("OrderItems");
                 });
 
+            modelBuilder.Entity("Core.Entities.Photo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsMain")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("PublicId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Photo");
+                });
+
             modelBuilder.Entity("Core.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -110,9 +135,6 @@ namespace Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasMaxLength(100);
-
-                    b.Property<string>("PictureUrl")
-                        .HasColumnType("TEXT");
 
                     b.Property<double>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -226,6 +248,15 @@ namespace Infrastructure.Data.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("OrderItemId");
                         });
+                });
+
+            modelBuilder.Entity("Core.Entities.Photo", b =>
+                {
+                    b.HasOne("Core.Entities.Product", "Product")
+                        .WithMany("Photos")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Core.Entities.Product", b =>

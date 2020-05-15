@@ -28,7 +28,7 @@ export class ShopComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getProducts(true);
+    this.getProducts();
     this.getBrands();
     this.getTypes();
   }
@@ -86,7 +86,7 @@ export class ShopComponent implements OnInit {
     if (params.pageNumber !== event) {
       params.pageNumber = event;
       this.shopService.setShopParams(params);
-      this.getProducts(true);
+      this.getProducts();
     }
   }
 

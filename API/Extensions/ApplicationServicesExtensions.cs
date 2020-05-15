@@ -1,16 +1,18 @@
 using System.Linq;
 using API.Errors;
+using Core.Helper;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace API.Extensions
 {
     public static class ApplicationServicesExtensions
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<IResponseCacheService, ResponseCacheService>();
             
@@ -27,6 +29,10 @@ namespace API.Extensions
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+            services.AddScoped<IPhotoService, CloudinaryPhotoService>();
+
+            services.Configure<CloudinarySettings>(configuration.GetSection("Cloudinary"));
 
             services.Configure<ApiBehaviorOptions>(options =>
             {

@@ -13,6 +13,7 @@ import { BasketService } from 'src/app/basket/basket.service';
 export class ProductDetailsComponent implements OnInit {
   product: IProduct;
   quantity = 1;
+  defaultPicture = 'assets/images/placeholder.png';
 
   constructor(
     private shopService: ShopService,

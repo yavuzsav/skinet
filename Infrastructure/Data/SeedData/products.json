@@ -3,144 +3,234 @@
     "Name": "Angular Speedster Board 2000",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
     "Price": 200,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256657/skinet/sb-ang1_l4k4dt.png",
     "ProductTypeId": 1,
-    "ProductBrandId": 1
+    "ProductBrandId": 1,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256657/skinet/sb-ang1_l4k4dt.png",
+        "IsMain": true
+      }
+    ] 
   },
   {
     "Name": "Green Angular Board 3000",
     "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
     "Price": 150,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256657/skinet/sb-ang2_ba5xfr.png",
     "ProductTypeId": 1,
-    "ProductBrandId": 1
+    "ProductBrandId": 1,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256657/skinet/sb-ang2_ba5xfr.png",
+        "IsMain": true
+      }
+    ]
   },
   {
     "Name": "Core Board Speed Rush 3",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
     "Price": 180,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256657/skinet/sb-core1_kmecuk.png",
     "ProductTypeId": 1,
-    "ProductBrandId": 2
+    "ProductBrandId": 2,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256657/skinet/sb-core1_kmecuk.png",
+        "IsMain": true
+      }
+    ]
   },
   {
     "Name": "Net Core Super Board",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
     "Price": 300,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256658/skinet/sb-core2_nmpa1m.png",
     "ProductTypeId": 1,
-    "ProductBrandId": 2
+    "ProductBrandId": 2,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256658/skinet/sb-core2_nmpa1m.png",
+        "IsMain": true
+      }
+    ]
   },
   {
     "Name": "React Board Super Whizzy Fast",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
     "Price": 250,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256657/skinet/sb-react1_sp28ek.png",
     "ProductTypeId": 1,
-    "ProductBrandId": 4
+    "ProductBrandId": 4,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256657/skinet/sb-react1_sp28ek.png",
+        "IsMain": true
+      }
+    ]
   },
   {
     "Name": "Typescript Entry Board",
     "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
     "Price": 120,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256657/skinet/sb-ts1_e6bbdg.png",
     "ProductTypeId": 1,
-    "ProductBrandId": 5
+    "ProductBrandId": 5,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256657/skinet/sb-ts1_e6bbdg.png",
+        "IsMain": true
+      }
+    ]
   },
   {
     "Name": "Core Blue Hat",
     "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
     "Price": 10,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589257660/skinet/hat-core1_mk66ua.png",
     "ProductTypeId": 2,
-    "ProductBrandId": 2
+    "ProductBrandId": 2,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589257660/skinet/hat-core1_mk66ua.png",
+        "IsMain": true
+      }
+    ]
   },
   {
     "Name": "Green React Woolen Hat",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
     "Price": 8,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256657/skinet/hat-react1_gdneuc.png",
     "ProductTypeId": 2,
-    "ProductBrandId": 4
+    "ProductBrandId": 4,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256657/skinet/hat-react1_gdneuc.png",
+        "IsMain": true
+      }
+    ]
   },
   {
     "Name": "Purple React Woolen Hat",
     "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
     "Price": 15,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256657/skinet/hat-react2_sgnepm.png",
     "ProductTypeId": 2,
-    "ProductBrandId": 4
+    "ProductBrandId": 4,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256657/skinet/hat-react2_sgnepm.png",
+        "IsMain": true
+      }
+    ]
   },
   {
     "Name": "Blue Code Gloves",
     "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
     "Price": 18,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256656/skinet/glove-code1_tcd7xk.png",
     "ProductTypeId": 4,
-    "ProductBrandId": 3
+    "ProductBrandId": 3,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256656/skinet/glove-code1_tcd7xk.png",
+        "IsMain": true
+      }
+    ]
   },
   {
     "Name": "Green Code Gloves",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
     "Price": 15,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256656/skinet/glove-code2_sm5vk0.png",
     "ProductTypeId": 4,
-    "ProductBrandId": 3
+    "ProductBrandId": 3,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256656/skinet/glove-code2_sm5vk0.png",
+        "IsMain": true
+      }
+    ]
   },
   {
     "Name": "Purple React Gloves",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa.",
     "Price": 16,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256656/skinet/glove-react1_zgmpid.png",
     "ProductTypeId": 4,
-    "ProductBrandId": 4
+    "ProductBrandId": 4,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256656/skinet/glove-react1_zgmpid.png",
+        "IsMain": true
+      }
+    ]
   },
   {
     "Name": "Green React Gloves",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
     "Price": 14,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256656/skinet/glove-react2_fzncsq.png",
     "ProductTypeId": 4,
-    "ProductBrandId": 4
+    "ProductBrandId": 4,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256656/skinet/glove-react2_fzncsq.png",
+        "IsMain": true
+      }
+    ]
   },
   {
     "Name": "Redis Red Boots",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
     "Price": 250,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256656/skinet/boot-redis1_ye8wma.png",
     "ProductTypeId": 3,
-    "ProductBrandId": 6
+    "ProductBrandId": 6,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256656/skinet/boot-redis1_ye8wma.png",
+        "IsMain": true
+      }
+    ]
   },
   {
     "Name": "Core Red Boots",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
     "Price": 189.99,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256656/skinet/boot-core2_ljgzal.png",
     "ProductTypeId": 3,
-    "ProductBrandId": 2
+    "ProductBrandId": 2,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256656/skinet/boot-core2_ljgzal.png",
+        "IsMain": true
+      }
+    ]
   },
   {
     "Name": "Core Purple Boots",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
     "Price": 199.99,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256658/skinet/boot-core1_ytojtz.png",
     "ProductTypeId": 3,
-    "ProductBrandId": 2
+    "ProductBrandId": 2,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256658/skinet/boot-core1_ytojtz.png",
+        "IsMain": true
+      }
+    ]
   },
   {
     "Name": "Angular Purple Boots",
     "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
     "Price": 150,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256657/skinet/boot-ang2_isxdqd.png",
     "ProductTypeId": 3,
-    "ProductBrandId": 1
+    "ProductBrandId": 1,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256657/skinet/boot-ang2_isxdqd.png",
+        "IsMain": true
+      }
+    ]
   },
   {
     "Name": "Angular Blue Boots",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
     "Price": 180,
-    "PictureUrl": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256658/skinet/boot-ang1_aa2azp.png",
     "ProductTypeId": 3,
-    "ProductBrandId": 1
+    "ProductBrandId": 1,
+    "Photos": [
+      {
+        "Url": "https://res.cloudinary.com/drszt4hzs/image/upload/v1589256658/skinet/boot-ang1_aa2azp.png",
+        "IsMain": true
+      }
+    ]
   }
 ]

@@ -3,6 +3,7 @@
     <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="CloudinaryDotNet" Version="1.10.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.2" />
     <PackageReference Include="StackExchange.Redis" Version="2.1.30" />

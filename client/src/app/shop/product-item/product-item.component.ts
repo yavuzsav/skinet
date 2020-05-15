@@ -9,6 +9,7 @@ import { BasketService } from 'src/app/basket/basket.service';
 })
 export class ProductItemComponent implements OnInit {
   @Input() product: IProduct;
+  defaultPicture = 'assets/images/placeholder.png';
 
   constructor(private basketService: BasketService) { }
 

@@ -41,7 +41,7 @@ namespace API
                 return ConnectionMultiplexer.Connect(configuration);
             });
 
-            services.AddApplicationServices();
+            services.AddApplicationServices(_config);
             services.AddIdentityServices(_config);
             services.AddSwaggerDocumentation();
 
