@@ -27,6 +27,13 @@ const routes: Routes = [
     path: 'account', loadChildren: () => import('./account/account.module')
       .then(mod => mod.AccountModule), data: { breadcrumb: { skip: true } }
   },
+  {
+    path: 'admin',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./admin/admin.module')
+      .then(mod => mod.AdminModule),
+    data: { breadcrumb: 'Admin' }
+  },
   { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
 ];
 
