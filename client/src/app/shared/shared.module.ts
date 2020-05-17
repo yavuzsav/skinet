@@ -12,6 +12,7 @@ import {CdkStepperModule} from '@angular/cdk/stepper';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { BasketSummaryComponent } from './components/basket-summary/basket-summary.component';
 import {RouterModule} from '@angular/router';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {RouterModule} from '@angular/router';
     FormsModule,
     CdkStepperModule,
     RouterModule,
+    NgxGalleryModule
   ],
   exports: [
     PaginationModule,
@@ -39,6 +41,7 @@ import {RouterModule} from '@angular/router';
     CdkStepperModule,
     StepperComponent,
     BasketSummaryComponent,
+    NgxGalleryModule
   ]
 })
 export class SharedModule { }
