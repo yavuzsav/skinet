@@ -36,9 +36,15 @@
     <span *ngIf="controlDir.control.errors?.required"
       >{{ label }} is required</span
     >
-    <span *ngIf="controlDir.control.errors?.pattern"
-      >Invalid Email address</span
-    >
+
+    <span *ngIf="controlDir.control.errors?.pattern">
+      {{patternErrorMessage !== '' ? patternErrorMessage : invalidPattern}}
+    </span>
+
+    <span *ngIf="controlDir.control.errors?.min">
+      Must be greater than zero
+    </span>
+
   </div>
 
   <div

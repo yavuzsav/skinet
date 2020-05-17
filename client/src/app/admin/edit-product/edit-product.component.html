@@ -1,0 +1,18 @@
+<section class="product-edit mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="tab-panel">
+          <app-stepper [linearModeSelected]="true" #appStepper>
+            <cdk-step [label]="'Product'" [completed]="productForm.valid">
+              <app-product-form [productForm]="productForm" [brands]="brands" [types]="types"></app-product-form>
+            </cdk-step>
+            <cdk-step [label]="'Product-Photos'">
+              Product photo
+            </cdk-step>
+          </app-stepper>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
