@@ -4,10 +4,11 @@ import { AdminComponent } from './admin.component';
 import { SharedModule } from '../shared/shared.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { EditProductComponent } from './edit-product/edit-product.component';
-import { ProductFormComponent } from './product-form/product-form.component';
+import { EditProductFormComponent } from './edit-product-form/edit-product-form.component';
+import { EditProductPhotosComponent } from './edit-product-photos/edit-product-photos.component';
 
 @NgModule({
-  declarations: [AdminComponent, EditProductComponent, ProductFormComponent],
+  declarations: [AdminComponent, EditProductComponent, EditProductFormComponent, EditProductPhotosComponent],
   imports: [
     CommonModule,
     SharedModule,

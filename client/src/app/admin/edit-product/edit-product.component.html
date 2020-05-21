@@ -5,10 +5,10 @@
         <div class="tab-panel">
           <app-stepper [linearModeSelected]="true" #appStepper>
             <cdk-step [label]="'Product'" [completed]="productForm.valid">
-              <app-product-form [productForm]="productForm" [brands]="brands" [types]="types"></app-product-form>
+              <app-edit-product-form [productForm]="productForm" [brands]="brands" [types]="types"></app-edit-product-form>
             </cdk-step>
             <cdk-step [label]="'Product-Photos'">
-              Product photo
+              <app-edit-product-photos [product]="product"></app-edit-product-photos>
             </cdk-step>
           </app-stepper>
         </div>

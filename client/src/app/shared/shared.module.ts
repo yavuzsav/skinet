@@ -13,10 +13,14 @@ import { StepperComponent } from './components/stepper/stepper.component';
 import { BasketSummaryComponent } from './components/basket-summary/basket-summary.component';
 import {RouterModule} from '@angular/router';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { PhotoWidgetComponent } from './components/photo-widget/photo-widget.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 @NgModule({
-  declarations: [PagingHeaderComponent, PagerComponent, OrderTotalsComponent, TextInputComponent, StepperComponent, BasketSummaryComponent],
+  declarations: [PagingHeaderComponent, PagerComponent, OrderTotalsComponent, TextInputComponent, StepperComponent,
+    BasketSummaryComponent, PhotoWidgetComponent],
   imports: [
     CommonModule,
     PaginationModule.forRoot(),
@@ -26,7 +30,9 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
     FormsModule,
     CdkStepperModule,
     RouterModule,
-    NgxGalleryModule
+    NgxGalleryModule,
+    NgxDropzoneModule,
+    ImageCropperModule
   ],
   exports: [
     PaginationModule,
@@ -41,7 +47,10 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
     CdkStepperModule,
     StepperComponent,
     BasketSummaryComponent,
-    NgxGalleryModule
+    NgxGalleryModule,
+    PhotoWidgetComponent,
+    NgxDropzoneModule,
+    ImageCropperModule,
   ]
 })
 export class SharedModule { }

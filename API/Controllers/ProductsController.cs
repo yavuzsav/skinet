@@ -200,5 +200,34 @@ namespace API.Controllers
 
             return Ok();
         }
+
+        [HttpPost("{productId}/photo/{photoId}")]
+        public async Task<ActionResult<ProductToReturnDto>> SetMainPhoto(int productId, int photoId)
+        {
+            var spec = new ProductsWithTypesAndBrandsAndPhotosSpecification(productId);
+            var product = await _unitOfWork.Repository<Product>().GetEntityWithSpecAsync(spec);
+
+            if (product.Photos.All(x => x.Id != photoId))
+                return BadRequest(new ApiResponse(404, "Product photo not found"));
+
+            var photo = product.Photos.FirstOrDefault(x => x.Id == photoId);
+
+            if (photo.IsMain)
+                return BadRequest("This is already the main photo");
+
+            var currentMainPhoto = product.Photos.FirstOrDefault(x => x.IsMain);
+            if (currentMainPhoto != null)
+                currentMainPhoto.IsMain = false;
+
+            photo.IsMain = true;
+
+            _unitOfWork.Repository<Product>().Update(product);
+
+            var result = await _unitOfWork.Complete();
+            
+            if (result <= 0) return BadRequest(new ApiResponse(400, "Problem adding photo product"));
+
+            return _mapper.Map<Product, ProductToReturnDto>(product);
+        }
     }
 }

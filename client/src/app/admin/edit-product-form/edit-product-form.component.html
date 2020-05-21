@@ -26,7 +26,12 @@
 </div>
 
 <div class="float-right">
-  <button [disabled]="productForm.invalid" class="btn btn-primary" cdkStepperNext>
-    Go to Add Photos <i class="fa fa-angle-right"></i>
+  <button [disabled]="productForm.invalid" class="btn btn-primary" (click)="onSubmit()">
+    Save
+    <i [ngClass]="loading ? 'fa fa-spinner fa-spin' : 'fa fa-save'"></i>
+  </button>
+  <button *ngIf="nextPage" [disabled]="productForm.invalid" class="btn btn-secondary ml-3" cdkStepperNext>
+    Go to Photos
+    <i class="fa fa-angle-right"></i>
   </button>
 </div>

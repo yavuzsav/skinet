@@ -22,4 +22,21 @@ export class AdminService {
   deleteProduct(id: number) {
     return this.http.delete(this.baseUrl + 'products/' + id );
   }
+
+  AddProductPhoto(id: number, file: File) {
+    const formData = new FormData();
+    formData.append('photo', file, 'image.png');
+    return this.http.put(this.baseUrl + 'products/' + id + '/photo', formData, {
+      reportProgress: true,
+      observe: 'events'
+    });
+  }
+
+  deleteProductPhoto(productId: number, photoId: number) {
+    return this.http.delete(this.baseUrl + 'products/' + productId + '/photo/' + photoId);
+  }
+
+  setMainPhoto(productId: number, photoId: number) {
+    return this.http.post(this.baseUrl + 'products/' + productId + '/photo/' + photoId, {});
+  }
 }
