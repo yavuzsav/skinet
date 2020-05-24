@@ -27,7 +27,7 @@ namespace API.Controllers
             _photoService = photoService;
         }
 
-        //[Cached()]
+        [Cached()]
         [HttpGet]
         public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts(
             [FromQuery] ProductSpecParams productParams)
@@ -46,7 +46,7 @@ namespace API.Controllers
                 data));
         }
 
-        //[Cached()]
+        [Cached()]
         [HttpGet("{id}", Name = "GetProduct")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
@@ -61,20 +61,21 @@ namespace API.Controllers
             return _mapper.Map<Product, ProductToReturnDto>(product);
         }
 
-        //[Cached()]
+        [Cached()]
         [HttpGet("brands")]
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductBrands()
         {
             return Ok(await _unitOfWork.Repository<ProductBrand>().ListAllAsync());
         }
 
-        //[Cached()]
+        [Cached()]
         [HttpGet("types")]
         public async Task<ActionResult<IReadOnlyList<ProductType>>> GetProductTypes()
         {
             return Ok(await _unitOfWork.Repository<ProductType>().ListAllAsync());
         }
 
+        [CacheRemove("/api/products")]
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> CreateProduct(ProductCreateDto productCreateDto)
@@ -101,6 +102,7 @@ namespace API.Controllers
             return CreatedAtRoute("GetProduct", new {id = product.Id}, productToReturn);
         }
 
+        [CacheRemove("/api/products")]
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ProductToReturnDto>> UpdateProduct(int id, ProductCreateDto productCreateDto)
@@ -128,6 +130,7 @@ namespace API.Controllers
             return _mapper.Map<Product, ProductToReturnDto>(product);
         }
 
+        [CacheRemove("/api/products")]
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteProduct(int id)
@@ -149,6 +152,7 @@ namespace API.Controllers
             return Ok();
         }
 
+        [CacheRemove("/api/products")]
         [HttpPut("{productId}/photo")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ProductToReturnDto>> AddProductPhoto(int productId,
@@ -182,6 +186,7 @@ namespace API.Controllers
             return _mapper.Map<Product, ProductToReturnDto>(product);
         }
 
+        [CacheRemove("/api/products")]
         [HttpDelete("{productId}/photo/{photoId}")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteProductPhoto(int productId, int photoId)
@@ -207,6 +212,7 @@ namespace API.Controllers
             return Ok();
         }
 
+        [CacheRemove("/api/products")]
         [HttpPost("{productId}/photo/{photoId}")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ProductToReturnDto>> SetMainPhoto(int productId, int photoId)

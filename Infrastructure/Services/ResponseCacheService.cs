@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Core.Interfaces;
@@ -12,7 +13,7 @@ namespace Infrastructure.Services
 
         public ResponseCacheService(IConnectionMultiplexer redis)
         {
-            _database = redis.GetDatabase();
+            _database = redis.GetDatabase(0);
         }
         
         public async Task CacheResponseAsync(string cacheKey, object response, TimeSpan timeToLive)
@@ -38,6 +39,18 @@ namespace Infrastructure.Services
                 return null;
 
             return cachedResponse;
+        }
+
+        public async Task DeleteCacheByPatternAsync(string pattern)
+        {
+            var endpoints = _database.Multiplexer.GetEndPoints();
+
+            foreach (var endpoint in endpoints)
+            {
+                var server = _database.Multiplexer.GetServer(endpoint);
+                var keys = server.Keys(database: _database.Database, pattern: pattern + "*").ToArray();
+                await _database.KeyDeleteAsync(keys);
+            }
         }
     }
 }
