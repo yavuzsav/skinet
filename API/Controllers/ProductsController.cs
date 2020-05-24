@@ -8,6 +8,7 @@ using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -75,6 +76,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> CreateProduct(ProductCreateDto productCreateDto)
         {
             var productType = await _unitOfWork.Repository<ProductType>().GetByIdAsync(productCreateDto.ProductTypeId);
@@ -100,6 +102,7 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ProductToReturnDto>> UpdateProduct(int id, ProductCreateDto productCreateDto)
         {
             var product = await _unitOfWork.Repository<Product>().GetByIdAsync(id);
@@ -126,6 +129,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteProduct(int id)
         {
             var spec = new ProductsWithTypesAndBrandsAndPhotosSpecification(id);
@@ -146,6 +150,7 @@ namespace API.Controllers
         }
 
         [HttpPut("{productId}/photo")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ProductToReturnDto>> AddProductPhoto(int productId,
             [FromForm] ProductPhotoForCreationDto productPhotoForCreationDto)
         {
@@ -178,6 +183,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{productId}/photo/{photoId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteProductPhoto(int productId, int photoId)
         {
             var spec = new ProductsWithTypesAndBrandsAndPhotosSpecification(productId);
@@ -202,6 +208,7 @@ namespace API.Controllers
         }
 
         [HttpPost("{productId}/photo/{photoId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ProductToReturnDto>> SetMainPhoto(int productId, int photoId)
         {
             var spec = new ProductsWithTypesAndBrandsAndPhotosSpecification(productId);
